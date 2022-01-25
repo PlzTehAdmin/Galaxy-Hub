@@ -1,0 +1,773 @@
+--Galaxy Hub
+
+if game.PlaceId == 1735775055 then
+    local library = loadstring(game:HttpGet("https://galaxywhitelist.000webhostapp.com/BigBoiHubsStuff", true))()
+    local mainchet = library:CreateWindow("Iron Man Simulator")
+    local pee = mainchet:AddFolder("Main")
+    local ff = mainchet:AddFolder("Suit")
+    local uni = library:CreateWindow("Universal")
+
+        pee:AddToggle({text = 'Fling Punch',state = false,callback = function(s)
+        local r = require(game:service('ReplicatedStorage').suitData)
+            r = r.suitData
+            for a=2,40 do
+                pcall(function()
+                    r['Mark'..a].Strength = s and -math.huge or 1
+                    r['Mark'..a].Strength = s and 20 or 1
+                end)
+            end
+    end})
+
+    local value = false
+    pee:AddToggle({text = 'No Cooldown',state = false,callback = function(s)
+            local r = require(game:service('ReplicatedStorage').suitData)
+            r = r.suitData
+            for a=2,40 do
+                pcall(function()
+                    r['Mark'..a].cooldownMult = s and math.huge or 1
+                end)
+            end
+    end})
+
+    pee:AddToggle({text = 'Instant Death Punch',state = false,callback = function(s)
+            local r = require(game:service('ReplicatedStorage').suitData)
+            r = r.suitData
+            for a=2,40 do
+                pcall(function()
+                    r['Mark'..a].Strength = s and math.huge or 1
+                end)
+            end
+    end})
+
+    pee:AddToggle({text = 'Confuse Punch',state = false,callback = function(s)
+            local r = require(game:service('ReplicatedStorage').suitData)
+            r = r.suitData
+            for a=2,40 do
+                pcall(function()
+                    r['Mark'..a].Strength = s and -(0/0) or 1
+                end)
+            end
+    end})
+
+    pee:AddToggle({text = 'God Punch',state = false,callback = function(s)
+            local r = require(game:service('ReplicatedStorage').suitData)
+            r = r.suitData
+            for a=2,40 do
+                pcall(function()
+                    r['Mark'..a].Strength = s and -(1/0) or 1
+                end)
+            end
+    end})
+
+    local value = false
+    pee:AddToggle({text = 'Anti Fling',state = false,callback = function(s)
+        value = s
+        if s then
+            local d
+            d = game:service('RunService').Stepped:connect(function()
+                if not value then
+                    return d:Disconnect()
+                end
+        local hrp = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
+        local val = 0
+            if hrp:FindFirstChild("FakeBPVelocity") then
+                hrp.FakeBPVelocity.MaxForce = Vector3.new(val, val, val)
+            end
+            if hrp:FindFirstChild("BodyAngularVelocity") then
+                hrp.BodyAngularVelocity.MaxTorque = Vector3.new(val, val, val)
+            end
+        end)
+        game.Players.LocalPlayer.Character.Humanoid.Changed:Connect(function()
+            pcall(function()
+                if lpc.Humanoid.Sit == true then
+                    lpc.Humanoid.Sit = false
+                else
+                    return
+                end
+            end)
+        end)
+        end
+    end})
+
+    pee:AddToggle({text = "Infinite Power", flag = "callall", callback = function()
+        pcall(function()
+    game:service('RunService').Stepped:connect(function(s)
+    game.Players.LocalPlayer.Character.Suit.Status.Power.Value = true
+            game.Players.LocalPlayer.Character.Suit.Status.Charge.Value = math.huge
+            game.Players.LocalPlayer.Character.Suit.Status.Power.Value = true
+    end)
+    end)
+        end})
+
+        pee:AddButton({text = "GodMode", flag = "god", callback = function()
+        pcall(function()
+    local player = game:GetService("Players").LocalPlayer
+        if player and player.Character then 
+    if player.Character:FindFirstChild("Suit") then 
+    for i,v2 in pairs(player.Character.Suit:GetChildren())do 
+            v2:FindFirstChild("Union") 
+                player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, -(1/0))
+            end
+        end
+        end
+    end)
+        end})
+
+        pee:AddButton({text = "Antifling 2", flag = "afling", callback = function()
+            pcall(function()
+        local player = game:GetService("Players").LocalPlayer
+            if player and player.Character then 
+        if player.Character:FindFirstChild("Suit") then 
+        for i,v2 in pairs(player.Character.Suit:GetChildren())do 
+                v2:FindFirstChild("Union") 
+                    player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, 1000000000000)
+                end
+            end
+            end
+        end)
+            end})
+
+            pee:AddButton({text = "Strong blasts", flag = "sblasts", callback = function()
+                for v = 1, 5 do
+                    local clone = game.Players.LocalPlayer.Backpack.suitControl.Client:Clone()
+                    clone.Parent = game.Players.LocalPlayer.Backpack.suitControl
+                end
+            end})
+
+            ff:AddList({text = "Chrome suit", flag = "csuit", value = "Select a part", values = {"UpperTorso", "LowerTorso", "LeftLowerLeg", "LeftUpperLeg", "RightUpperLeg", "RightLowerLeg", "LeftUpperArm", "LeftLowerArm", "RightUpperArm", "RightLowerArm", "LeftHand", "RightHand", "LeftFoot", "RightFoot"}, callback = function(asda)
+                local suit = character:WaitForChild("Suit")
+                pcall(function()
+                    if asda == "UpperTorso" then
+                        for v = 1, 15 do
+                            suit.UpperTorso.Union:Destroy()
+                        end
+                    end
+                    if asda == "LowerTorso" then
+                        for v = 1, 15 do
+                            suit.LowerTorso.Union:Destroy()
+                            suit.LowerTorso.Union:Destroy()
+                        end
+                    end
+                    if asda == "LeftLowerLeg" then
+                        for v = 1, 15 do
+                            suit.LeftLowerLeg.Union:Destroy()
+                        end
+                    end
+                    if asda == "LeftUpperLeg" then
+                        for v = 1, 15 do
+                            suit.LeftUpperLeg.Union:Destroy()
+                            suit.LeftUpperLeg.Part:Destroy()
+                        end
+                    end
+                    if asda == "RightLowerLeg" then
+                        for v = 1, 15 do
+                            suit.RightLowerLeg.Union:Destroy()
+                        end
+                    end
+                    if asda == "RightUpperLeg" then
+                        for v = 1, 15 do
+                            suit.RightUpperLeg.Union:Destroy()
+                            suit.RightUpperLeg.Part:Destroy()
+                        end
+                    end
+                    if asda == "LeftLowerArm" then
+                        for v = 1, 15 do
+                            suit.LeftLowerArm.Union:Destroy()
+                        end
+                    end
+                    if asda == "LeftUpperArm" then
+                        for v = 1, 15 do
+                            suit.LeftUpperArm.Union:Destroy()
+                            suit.LeftUpperArm.Part:Destroy()
+                        end
+                    end
+                    if asda == "RightLowerArm" then
+                        for v = 1, 15 do
+                            suit.RightLowerArm.Union:Destroy()
+                        end
+                    end
+                    if asda == "RightUpperArm" then
+                        for v = 1, 15 do
+                            suit.RightUpperArm.Union:Destroy()
+                            suit.RightUpperArm.Part:Destroy()
+                        end
+                    end
+                    if asda == "LeftHand" then
+                        for v = 1, 15 do
+                            suit.LeftHand.Union:Destroy()
+                        end
+                    end
+                    if asda == "RightHand" then
+                        for v = 1, 15 do
+                            suit.RightHand.Union:Destroy()
+                        end
+                    end
+                    if asda == "LeftFoot" then
+                        for v = 1, 15 do
+                            suit.LeftFoot.Union:Destroy()
+                        end
+                    end
+                    if asda == "RightFoot" then
+                        for v = 1, 15 do
+                            suit.RightFoot.Union:Destroy()
+                        end
+                    end
+                end)
+            end})
+
+    ff:AddButton({text = "Unbreakable suit", flag = "usuit", callback = function()
+        game.Players.LocalPlayer.Character.Suit.Status.damageTaken:Destroy()
+        end})
+
+    ff:AddButton({text = "Chrome Suit All", flag = "csuit", callback = function()
+        pcall(function()
+        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.LeftUpperArm.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LeftUpperArm.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LeftUpperArm.Part:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LeftUpperArm.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LeftUpperArm.Union:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.RightUpperArm.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.RightUpperArm.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.RightUpperArm.Part:Destroy()
+        game.Players.LocalPlayer.Character.Suit.RightUpperArm.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.RightUpperArm.Union:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.RightLowerArm.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.RightLowerArm.Union:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.LeftLowerArm.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LeftLowerArm.Union:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.LeftHand.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LeftHand.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LeftHand.Union:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.RightHand.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.RightHand.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.RightHand.Union:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.LowerTorso.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LowerTorso.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LowerTorso.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LowerTorso.Union:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.RightUpperLeg.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.RightUpperLeg.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.RightUpperLeg.Part:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.LeftUpperLeg.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LeftUpperLeg.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LeftUpperLeg.Part:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.RightLowerLeg.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.RightLowerLeg.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.RightLowerLeg.Union:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.LeftLowerLeg.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LeftLowerLeg.Union:Destroy()
+        game.Players.LocalPlayer.Character.Suit.LeftLowerLeg.Union:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.RightFoot.Union:Destroy()
+        
+        game.Players.LocalPlayer.Character.Suit.LeftFoot.Union:Destroy()
+        end)
+        end})
+        
+        ff:AddButton({text = "Rapid Suit On", flag = "rsuit", callback = function()
+                local Data = game.ReplicatedStorage.suitData
+                local Data2 = require(Data)
+                local Data3 = Data2.suitData
+                Data3.Mark19.Acceleration = 999
+                Data3.Mark19.Deceleration = 1000
+                Data3.Mark19.maxSpeed = 15000
+                Data3.Mark4.Acceleration = 999
+                Data3.Mark4.Deceleration = 1000
+                Data3.Mark4.maxSpeed = 15000
+                Data3.Mark20.Acceleration = 999
+                Data3.Mark20.Deceleration = 1000
+                Data3.Mark20.maxSpeed = 15000
+                Data3.Mark12.Acceleration = 999
+                Data3.Mark12.Deceleration = 1000
+                Data3.Mark12.maxSpeed = 15000
+                Data3.Mark28.Acceleration = 999
+                Data3.Mark28.Deceleration = 1000
+                Data3.Mark28.maxSpeed = 15000
+                Data3.Mark40.Acceleration = 1000
+                Data3.Mark40.Deceleration = 1000
+                Data3.Mark40.maxSpeed = 15000
+                Data3.Mark6.Acceleration = 999
+                Data3.Mark6.Deceleration = 1000
+                Data3.Mark6.maxSpeed = 15000
+                Data3.Mark13.Acceleration = 999
+                Data3.Mark13.Deceleration = 1000
+                Data3.Mark13.maxSpeed = 15000
+                Data3.Mark33.Acceleration = 999
+                Data3.Mark33.Deceleration = 1000
+                Data3.Mark33.maxSpeed = 15000
+                Data3.Mark21.Acceleration = 1000
+                Data3.Mark21.Deceleration = 1000
+                Data3.Mark21.maxSpeed = 15000
+                Data3.Mark14.Acceleration = 1000
+                Data3.Mark14.Deceleration = 1000
+                Data3.Mark14.maxSpeed = 15000
+                Data3.Mark9.Acceleration = 999
+                Data3.Mark9.Deceleration = 1000
+                Data3.Mark9.maxSpeed = 15000
+                Data3.Mark31.Acceleration = 1000
+                Data3.Mark31.Deceleration = 1000
+                Data3.Mark31.maxSpeed = 15000
+                Data3.Mark30.Acceleration = 999
+                Data3.Mark30.Deceleration = 1000
+                Data3.Mark30.maxSpeed = 15000
+                Data3.Mark27.Acceleration = 999
+                Data3.Mark27.Deceleration = 1000
+                Data3.Mark27.maxSpeed = 15000
+                Data3.Mark3.Acceleration = 999
+                Data3.Mark3.Deceleration = 1000
+                Data3.Mark3.maxSpeed = 15000
+                Data3.Mark23.Acceleration = 999
+                Data3.Mark23.Deceleration = 1000
+                Data3.Mark23.maxSpeed = 15000
+                Data3.Mark2.Acceleration = 999
+                Data3.Mark2.Deceleration = 1000
+                Data3.Mark2.maxSpeed = 15000
+        end})
+
+        ff:AddButton({text = "Rapid Suit Off", flag = "rsuit", callback = function()
+            local Data = game.ReplicatedStorage.suitData
+            local Data2 = require(Data)
+            local Data3 = Data2.suitData
+            Data3.Mark19.Acceleration = 310
+            Data3.Mark19.Deceleration = 150
+            Data3.Mark19.maxSpeed = 310
+            Data3.Mark4.Acceleration = 310
+            Data3.Mark4.Deceleration = 150
+            Data3.Mark4.maxSpeed = 310
+            Data3.Mark20.Acceleration = 310
+            Data3.Mark20.Deceleration = 150
+            Data3.Mark20.maxSpeed = 310
+            Data3.Mark12.Acceleration = 310
+            Data3.Mark12.Deceleration = 150
+            Data3.Mark12.maxSpeed = 310
+            Data3.Mark28.Acceleration = 310
+            Data3.Mark28.Deceleration = 150
+            Data3.Mark28.maxSpeed = 310
+            Data3.Mark40.Acceleration = 310
+            Data3.Mark40.Deceleration = 150
+            Data3.Mark40.maxSpeed = 310
+            Data3.Mark6.Acceleration = 310
+            Data3.Mark6.Deceleration = 150
+            Data3.Mark6.maxSpeed = 310
+            Data3.Mark13.Acceleration = 310
+            Data3.Mark13.Deceleration = 150
+            Data3.Mark13.maxSpeed = 310
+            Data3.Mark33.Acceleration = 310
+            Data3.Mark33.Deceleration = 150
+            Data3.Mark33.maxSpeed = 310
+            Data3.Mark21.Acceleration = 310
+            Data3.Mark21.Deceleration = 150
+            Data3.Mark21.maxSpeed = 310
+            Data3.Mark14.Acceleration = 310
+            Data3.Mark14.Deceleration = 150
+            Data3.Mark14.maxSpeed = 310
+            Data3.Mark9.Acceleration = 310
+            Data3.Mark9.Deceleration = 150
+            Data3.Mark9.maxSpeed = 310
+            Data3.Mark31.Acceleration = 310
+            Data3.Mark31.Deceleration = 150
+            Data3.Mark31.maxSpeed = 310
+            Data3.Mark30.Acceleration = 310
+            Data3.Mark30.Deceleration = 150
+            Data3.Mark30.maxSpeed = 310
+            Data3.Mark27.Acceleration = 310
+            Data3.Mark27.Deceleration = 150
+            Data3.Mark27.maxSpeed = 310
+            Data3.Mark3.Acceleration = 310
+            Data3.Mark3.Deceleration = 150
+            Data3.Mark3.maxSpeed = 310
+            Data3.Mark23.Acceleration = 310
+            Data3.Mark23.Deceleration = 150
+            Data3.Mark23.maxSpeed = 310
+            Data3.Mark2.Acceleration = 310
+            Data3.Mark2.Deceleration = 150
+            Data3.Mark2.maxSpeed = 310
+        end})
+        
+    ff:AddButton({text = "Instant suit", flag = "isuit", callback = function()
+        local UserInputService = game:GetService("UserInputService")
+        local function GetInput(input, gpe)
+        if input.KeyCode == Enum.KeyCode.Q then 
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftFoot')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftHand')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftLowerArm')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftLowerLeg')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftUpperArm')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LowerTorso')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightFoot')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightHand')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightLowerArm')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightLowerLeg')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightUpperArm')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightUpperLeg')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('UpperTorso')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftUpperLeg')
+        end
+    end
+    UserInputService.InputBegan:Connect(GetInput)
+    end})
+
+
+    ff:AddList({text = "CallSuit", flag = "casuit", value = "Select a Suit", values = {"Mark2", "Mark3", "Mark4", "Mark6", "Mark9", "Mark12", "Mark13", "Mark14", "Mark19", "Mark20", "Mark21", 
+    "Mark23", "Mark27", "Mark28", "Mark30", "Mark31", "Mark33", "Mark40", "Mark42", "WarMachine"}, callback = function(suit)
+        
+        if suit == "Mark2" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark2", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark4" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark4", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark6" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark6", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark9" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark9", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark12" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark12", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark13" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark13", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark14" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark14", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark19" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark19", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark20" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark20", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark21" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark21", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark23" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark23", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark27" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark27", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark28" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark28", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark30" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark30", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark31" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark31", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark33" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark33", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark40" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark40", tick(), 0)
+            end
+    end
+        
+        if suit == "Mark42" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("Mark42", tick(), 0)
+            end
+    end
+        if suit == "WarMachine" then
+            for v = 1, 15 do
+            game:GetService("Players").LocalPlayer.Backpack.ironMan.Assets.Events.callSuit:FireServer("WarMachine1", tick(), 0)
+            end
+    end
+    end})
+
+    uni:AddBind({text = "UI Bind", key = "LeftControl", save = true, callback = function() library:Close() end})
+
+    uni:AddButton({text = "Galaxy Admin", flag = "gadmin", callback = function()
+        pcall(function()
+        --Galaxy Hub Admin
+
+    local Admin = loadstring(game:HttpGet("https://raw.githubusercontent.com/PlzTehAdmin/Galaxy-Hub/main/Galaxy%20Admin%20Source%20Code"))()
+    local Admin2 = Admin.load(getgenv().themes.dark, "Galaxy Hub", true) --(<theme>, <name>, <built-in commands>)
+    local theme = {
+        cmdBar = rgb(13,13,13),
+        cmdFont = Enum.Font.Code,
+        cmdTextColor = rgb(255,255,255),
+        cmdTextSize = 22,
+        infoFrame1 = rgb(25,25,25),
+        colorSequence =  ColorSequence.new({
+            ColorSequenceKeypoint.new(0,rgb(171,171,171)),
+            ColorSequenceKeypoint.new(1,rgb(255,255,255))
+        }),
+        infoFrame2 = rgb(13,13,13),
+        infoText1Color = rgb(255,255,255),
+        infoText1Font = Enum.Font.Gotham,
+        infoText1TSize = 14,
+        infoText2Color = rgb(255,255,255),
+        infoText2TSize = 15,
+        infoText2Font = Enum.Font.SourceSans,
+        inputAwaitingImage = 'rbxassetid://2122740641',
+        suggestionBackFrameColor = rgb(25,25,25),
+        correctionFrame = rgb(25,25,25),
+        suggestionTextColor = rgb(13,13,13),
+        suggestionTextFont = Enum.Font.Gotham,
+        suggestionTextXAlignment = Enum.TextXAlignment.Left,
+        suggestionTextTSize = 16,
+        scrollBackImageColor = rgb(13,13,13),
+        suggestionFont = Enum.Font.Gotham,
+        suggestionTextColor = rgb(255,255,255),
+        suggestionXAlignment = Enum.TextXAlignment.Left
+    }
+
+    Admin2.setPrefix(",")
+
+    Admin2.addCommand({name = "Snap",desc = "Kills player",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            pcall(function()
+    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+            local vector = Vector3.new(0, 0, 0) 
+            local dmg = math.huge
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+                    end
+                end)
+            end
+
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end})
+
+    Admin2.addCommand({name = "Loopkill",desc = "Loopkills player",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            pcall(function()
+    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+    game:service('RunService').Stepped:connect(function()
+            local vector = Vector3.new(0, 0, 0) 
+            local dmg = math.huge
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+                    end
+                end)
+            end)
+        end
+
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end})
+
+    Admin2.addCommand({name = "God",desc = "Gives god to player",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            pcall(function()
+    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+            local vector = Vector3.new(0, 0, 0) 
+            local dmg = -(1/0)
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+                    end
+                end)
+            end
+
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end})
+
+    Admin2.addCommand({name = "Loopgod",desc = "Loopgods player",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            pcall(function()
+    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+    game:service('RunService').Stepped:connect(function()
+            local vector = Vector3.new(0, 0, 0) 
+            local dmg = -(1/0)
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+                    end
+                end)
+            end)
+        end
+
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end})
+
+
+    Admin2.addCommand({name = "Confuse",desc = "Disables all features",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            pcall(function()
+    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+            local vector = Vector3.new(0, 0, 0) 
+            local dmg = -(0/0)
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+                    end
+                end)
+            end
+
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end})
+
+    Admin2.addCommand({name = "Loopconfuse",desc = "Loop disables all features",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            pcall(function()
+    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+    game:service('RunService').Stepped:connect(function()
+            local vector = Vector3.new(0, 0, 0) 
+            local dmg = -(0/0)
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+                    end
+                end)
+            end)
+        end
+
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end})
+
+    Admin2.addCommand({name = "Fling",desc = "Flings player",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            pcall(function()
+    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+            local vector = Vector3.new(0, 0, 0) 
+            local dmg = -(0/0)
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+        local vector = Vector3.new(0, 0, 0) 
+            local dmg = 999999999999999999999999999999999999
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+                    end
+    end
+    end)
+    end
+
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end}) 
+
+    Admin2.addCommand({name = "Loopfling",desc = "Loop flings player",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            pcall(function()
+    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+    game:service('RunService').Stepped:connect(function()
+            local vector = Vector3.new(0, 0, 0) 
+            local dmg = -(0/0)
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+        local vector = Vector3.new(0, 0, 0) 
+            local dmg = 999999999999999999999999999999999999
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+                    end
+    end
+    end)
+    end)
+    end
+
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end}) 
+
+    Admin2.addCommand({name = "to",desc = "teleports you to the target!",callback = function(v,b)
+        local t = Admin2.getplayers(v)
+        for i,v2 in pairs(t) do
+            pcall(function()
+                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(v2.Character.HumanoidRootPart.Position+Vector3.new(0,0,3))
+            end)
+        end
+        if b then
+            local m = Instance.new("Message",workspace)
+            m.Text = "Cheese!"
+            wait(1)
+            m:Destroy()
+        end
+    end})
+
+    Admin2.remove()
+
+    end)
+    end})
+
+    library:Init()
+end
