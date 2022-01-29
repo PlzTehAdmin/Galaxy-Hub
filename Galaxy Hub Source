@@ -135,7 +135,7 @@ if game.PlaceId == 1735775055 then
             end})
 
             ff:AddList({text = "Chrome suit", flag = "csuit", value = "Select a part", values = {"UpperTorso", "LowerTorso", "LeftLowerLeg", "LeftUpperLeg", "RightUpperLeg", "RightLowerLeg", "LeftUpperArm", "LeftLowerArm", "RightUpperArm", "RightLowerArm", "LeftHand", "RightHand", "LeftFoot", "RightFoot"}, callback = function(asda)
-                local suit = character:WaitForChild("Suit")
+                local suit = game.Players.LocalPlayer.Character.Suit
                 pcall(function()
                     if asda == "UpperTorso" then
                         for v = 1, 15 do
@@ -217,70 +217,6 @@ if game.PlaceId == 1735775055 then
 
     ff:AddButton({text = "Unbreakable suit", flag = "usuit", callback = function()
         game.Players.LocalPlayer.Character.Suit.Status.damageTaken:Destroy()
-        end})
-
-    ff:AddButton({text = "Chrome Suit All", flag = "csuit", callback = function()
-        pcall(function()
-        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.UpperTorso.Union:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.LeftUpperArm.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LeftUpperArm.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LeftUpperArm.Part:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LeftUpperArm.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LeftUpperArm.Union:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.RightUpperArm.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.RightUpperArm.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.RightUpperArm.Part:Destroy()
-        game.Players.LocalPlayer.Character.Suit.RightUpperArm.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.RightUpperArm.Union:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.RightLowerArm.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.RightLowerArm.Union:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.LeftLowerArm.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LeftLowerArm.Union:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.LeftHand.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LeftHand.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LeftHand.Union:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.RightHand.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.RightHand.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.RightHand.Union:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.LowerTorso.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LowerTorso.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LowerTorso.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LowerTorso.Union:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.RightUpperLeg.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.RightUpperLeg.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.RightUpperLeg.Part:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.LeftUpperLeg.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LeftUpperLeg.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LeftUpperLeg.Part:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.RightLowerLeg.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.RightLowerLeg.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.RightLowerLeg.Union:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.LeftLowerLeg.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LeftLowerLeg.Union:Destroy()
-        game.Players.LocalPlayer.Character.Suit.LeftLowerLeg.Union:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.RightFoot.Union:Destroy()
-        
-        game.Players.LocalPlayer.Character.Suit.LeftFoot.Union:Destroy()
-        end)
         end})
         
         ff:AddButton({text = "Rapid Suit On", flag = "rsuit", callback = function()
