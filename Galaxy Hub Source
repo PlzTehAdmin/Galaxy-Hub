@@ -7,7 +7,7 @@ if game.PlaceId == 1735775055 then
     local ff = mainchet:AddFolder("Suit")
     local uni = library:CreateWindow("Universal")
 
-        pee:AddToggle({text = 'Fling Punch',state = false,callback = function(s)
+    pee:AddToggle({text = 'Fling Punch',state = false,callback = function(s)
         local r = require(game:service('ReplicatedStorage').suitData)
             r = r.suitData
             for a=2,40 do
@@ -99,40 +99,38 @@ if game.PlaceId == 1735775055 then
     end)
         end})
 
-        pee:AddButton({text = "GodMode", flag = "god", callback = function()
+    pee:AddToggle({text = "GodMode", flag = "god", callback = function()
         pcall(function()
         local player = game:GetService("Players").LocalPlayer
             if player and player.Character then 
                 if player.Character:FindFirstChild("Suit") then 
-                    for i,v2 in pairs(player.Character.Suit:GetChildren())do 
-                        v2:FindFirstChild("Union") 
-                        player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, -math.huge)
-                    end
+                    game:service('RunService').Stepped:connect(function()
+                        for i,v2 in pairs(player.Character.Suit:GetChildren())do 
+                            v2:FindFirstChild("Union") 
+                            player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, -math.huge)
+                        end
+                    end)
                 end
             end
         end)
     end})
 
-        pee:AddButton({text = "AntiFling 2", flag = "afling", callback = function()
+        pee:AddToggle({text = "Anti Fling 2", flag = "afling", callback = function()
             pcall(function()
-        local player = game:GetService("Players").LocalPlayer
-            if player and player.Character then 
-        if player.Character:FindFirstChild("Suit") then 
-        for i,v2 in pairs(player.Character.Suit:GetChildren())do 
-                v2:FindFirstChild("Union") 
-                    player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, 1000000000000)
+                local player = game:GetService("Players").LocalPlayer
+                if player and player.Character then 
+                    if player.Character:FindFirstChild("Suit") then 
+                        game:service('RunService').Stepped:connect(function()
+                            for i,v2 in pairs(player.Character.Suit:GetChildren())do 
+                                v2:FindFirstChild("Union") 
+                                player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, 1000000000000)
+                            end
+                        end)
+                    end
                 end
-            end
-            end
-        end)
-            end})
+            end)
+        end})
 
-            pee:AddButton({text = "Strong Blasts", flag = "sblasts", callback = function()
-                for v = 1, 5 do
-                    local clone = game.Players.LocalPlayer.Backpack.suitControl.Client:Clone()
-                    clone.Parent = game.Players.LocalPlayer.Backpack.suitControl
-                end
-            end})
 
             ff:AddList({text = "Chrome suit", flag = "csuit", value = "Select a part", values = {"UpperTorso", "LowerTorso", "LeftLowerLeg", "LeftUpperLeg", "RightUpperLeg", "RightLowerLeg", "LeftUpperArm", "LeftLowerArm", "RightUpperArm", "RightLowerArm", "LeftHand", "RightHand", "LeftFoot", "RightFoot"}, callback = function(asda)
                 local suit = game.Players.LocalPlayer.Character.Suit
@@ -219,6 +217,13 @@ if game.PlaceId == 1735775055 then
         game.Players.LocalPlayer.Character.Suit.Status.damageTaken:Destroy()
         end})
         
+        ff:AddButton({text = "Strong Blasts", flag = "sblasts", callback = function()
+            for v = 1, 5 do
+                local clone = game.Players.LocalPlayer.Backpack.suitControl.Client:Clone()
+                clone.Parent = game.Players.LocalPlayer.Backpack.suitControl
+            end
+        end})
+
         ff:AddButton({text = "Rapid Suit On", flag = "rsuit", callback = function()
                 local Data = game.ReplicatedStorage.suitData
                 local Data2 = require(Data)
@@ -762,4 +767,23 @@ if game.PlaceId == 1735775055 then
         wait(7)
         end
     --End
+
+    
+    --AutoLoop
+
+    local loop1 = 'Xanthos_0'
+    
+    if game.workspace:FindFirstChild("Xanthos_0") ~= nil then
+        local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+        local vector = Vector3.new(0, 0, 0) 
+        local dmg = math.huge
+        game:service('RunService').Stepped:connect(function()
+            for i,v in pairs(game.Players:GetChildren()) do
+                if loop1 == v.Name then
+                    punchevent:FireServer(v.Character.HumanoidRootPart, dmg)
+                end
+            end
+        end)
+    end
+
 end
