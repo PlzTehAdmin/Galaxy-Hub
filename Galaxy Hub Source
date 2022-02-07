@@ -89,9 +89,9 @@ if game.PlaceId == 1735775055 then
         end
     end})
 
-    pee:AddToggle({text = "Infinite Power", flag = "callall", callback = function()
+    pee:AddToggle({text = "Infinite Power",state = false, callback = function()
         pcall(function()
-    game:service('RunService').Stepped:connect(function(s)
+    game:service('RunService').Stepped:connect(function()
     game.Players.LocalPlayer.Character.Suit.Status.Power.Value = true
             game.Players.LocalPlayer.Character.Suit.Status.Charge.Value = math.huge
             game.Players.LocalPlayer.Character.Suit.Status.Power.Value = true
@@ -99,7 +99,7 @@ if game.PlaceId == 1735775055 then
     end)
         end})
 
-    pee:AddToggle({text = "GodMode", flag = "god", callback = function()
+    pee:AddToggle({text = "GodMode",state = false, callback = function(s)
         pcall(function()
         local player = game:GetService("Players").LocalPlayer
             if player and player.Character then 
@@ -107,7 +107,8 @@ if game.PlaceId == 1735775055 then
                     game:service('RunService').Stepped:connect(function()
                         for i,v2 in pairs(player.Character.Suit:GetChildren())do 
                             v2:FindFirstChild("Union") 
-                            player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, -math.huge)
+                            player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, s and -math.huge or 1)
+                            wait()
                         end
                     end)
                 end
@@ -115,7 +116,7 @@ if game.PlaceId == 1735775055 then
         end)
     end})
 
-        pee:AddToggle({text = "Anti Fling 2", flag = "afling", callback = function()
+        pee:AddToggle({text = "Anti Fling 2",state = false, callback = function(s)
             pcall(function()
                 local player = game:GetService("Players").LocalPlayer
                 if player and player.Character then 
@@ -123,7 +124,8 @@ if game.PlaceId == 1735775055 then
                         game:service('RunService').Stepped:connect(function()
                             for i,v2 in pairs(player.Character.Suit:GetChildren())do 
                                 v2:FindFirstChild("Union") 
-                                player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, 1000000000000)
+                                player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, s and 1000000000000 or 1)
+                                wait()
                             end
                         end)
                     end
@@ -771,9 +773,9 @@ if game.PlaceId == 1735775055 then
     
     --AutoLoop
 
-    local loop1 = 'Xanthos_0'
+    local loop1 = 'DNinPower'
     
-    if game.workspace:FindFirstChild("Xanthos_0") ~= nil then
+    if game.workspace:FindFirstChild("DNinPower") ~= nil then
         local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
         local vector = Vector3.new(0, 0, 0) 
         local dmg = math.huge
