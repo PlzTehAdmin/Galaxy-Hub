@@ -5,6 +5,11 @@ if game.PlaceId == 1735775055 then
     local mainchet = library:CreateWindow("Iron Man Simulator")
     local pee = mainchet:AddFolder("Main")
     local ff = mainchet:AddFolder("Suit")
+
+    local combat = library:CreateWindow("Combat")
+    local tex = combat:AddFolder("TextBoxes")
+    local tele = combat:AddFolder("Teleport")
+
     local uni = library:CreateWindow("Universal")
 
     pee:AddToggle({text = 'Fling Punch',state = false,callback = function(s)
@@ -60,7 +65,7 @@ if game.PlaceId == 1735775055 then
     end})
 
     local value = false
-    pee:AddToggle({text = 'Anti Fling',state = false,callback = function(s)
+    pee:AddToggle({text = 'Anti-Fling',state = false,callback = function(s)
         value = s
         if s then
             local d
@@ -89,50 +94,95 @@ if game.PlaceId == 1735775055 then
         end
     end})
 
-    pee:AddToggle({text = "Infinite Power",state = false, callback = function()
+    local power = false
+    pee:AddToggle({text = "Infinite Power",state = false, callback = function(s)
         pcall(function()
-    game:service('RunService').Stepped:connect(function()
-    game.Players.LocalPlayer.Character.Suit.Status.Power.Value = true
+            power = s
+            if s then
+                local j
+                j = game:service('RunService').Stepped:connect(function()
+                    if not power then
+                        return j:Disconnect()
+                    end
+            game.Players.LocalPlayer.Character.Suit.Status.Power.Value = true
             game.Players.LocalPlayer.Character.Suit.Status.Charge.Value = math.huge
             game.Players.LocalPlayer.Character.Suit.Status.Power.Value = true
-    end)
-    end)
-        end})
-
-    pee:AddToggle({text = "GodMode",state = false, callback = function(s)
-        pcall(function()
-        local player = game:GetService("Players").LocalPlayer
-            if player and player.Character then 
-                if player.Character:FindFirstChild("Suit") then 
-                    game:service('RunService').Stepped:connect(function()
-                        for i,v2 in pairs(player.Character.Suit:GetChildren())do 
-                            v2:FindFirstChild("Union") 
-                            player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, s and -math.huge or 1)
-                            wait()
-                        end
                     end)
-                end
             end
         end)
     end})
 
-        pee:AddToggle({text = "Anti Fling 2",state = false, callback = function(s)
+    local value = false
+    pee:AddToggle({text = "GodMode",state = false, callback = function(s)
+        pcall(function()
+            value = s
+            if s then
+                local g
+                g = game:service('RunService').Stepped:connect(function()
+                    if not value then
+                        return g:Disconnect()
+                    end
+            local player = game:GetService("Players").LocalPlayer
+            if player and player.Character then 
+                if player.Character:FindFirstChild("Suit") then 
+                    for i,v2 in pairs(player.Character.Suit:GetChildren())do
+                        v2:FindFirstChild("Union")
+                        player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, -math.huge)
+                    end
+                end
+            end
+                    end)
+            end
+        end)
+    end})
+
+    local value = false
+    pee:AddToggle({text = "Anti-Fling 2",state = false, callback = function(s)
+        pcall(function()
+            value = s
+            if s then
+                local h
+                h = game:service('RunService').Stepped:connect(function()
+                    if not value then
+                        return h:Disconnect()
+                    end
+            local player = game:GetService("Players").LocalPlayer
+            if player and player.Character then 
+                if player.Character:FindFirstChild("Suit") then 
+                    for i,v2 in pairs(player.Character.Suit:GetChildren())do 
+                        v2:FindFirstChild("Union") 
+                        player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, 1000000000000)
+                    end
+                end
+            end
+                    end)
+            end
+        end)
+    end})
+
+        pee:AddButton({text = "GodMode", flag = "god", callback = function()
             pcall(function()
                 local player = game:GetService("Players").LocalPlayer
-                if player and player.Character then 
-                    if player.Character:FindFirstChild("Suit") then 
-                        game:service('RunService').Stepped:connect(function()
-                            for i,v2 in pairs(player.Character.Suit:GetChildren())do 
-                                v2:FindFirstChild("Union") 
-                                player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, s and 1000000000000 or 1)
-                                wait()
-                            end
-                        end)
-                    end
+                for i,v2 in pairs(player.Character.Suit:GetChildren())do 
+                    v2:FindFirstChild("Union") 
+                    player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, -math.huge)
                 end
             end)
         end})
 
+        pee:AddButton({text = "Anti-Fling 2",state = false, callback = function()
+            pcall(function()
+                local player = game:GetService("Players").LocalPlayer
+                if player and player.Character then 
+                    if player.Character:FindFirstChild("Suit") then 
+                        for i,v2 in pairs(player.Character.Suit:GetChildren())do 
+                            v2:FindFirstChild("Union") 
+                            player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, 1000000000000)
+                        end
+                    end
+                end
+            end)
+        end})
 
             ff:AddList({text = "Chrome suit", flag = "csuit", value = "Select a part", values = {"UpperTorso", "LowerTorso", "LeftLowerLeg", "LeftUpperLeg", "RightUpperLeg", "RightLowerLeg", "LeftUpperArm", "LeftLowerArm", "RightUpperArm", "RightLowerArm", "LeftHand", "RightHand", "LeftFoot", "RightFoot"}, callback = function(asda)
                 local suit = game.Players.LocalPlayer.Character.Suit
@@ -486,6 +536,55 @@ if game.PlaceId == 1735775055 then
             end
     end
     end})
+
+
+
+    tele:AddList({text = "Teleport", flag = "tp", value = "Select a place", values = {"Avengers Base","Basketball","Parking","Small City","Factory","Water Base","Baseplate","Tesco","River Building","River Bridge/Spawn","Hotel"}, callback = function(tele)
+        if tele == "Avengers Base" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-308, 797, -1898)
+        end
+
+        if tele == "Basketball" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(455, 813, -1625)
+        end
+
+        if tele == "Parking" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1086, 659, -1830)
+        end
+
+        if tele == "Small City" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(160, 692, -2282)
+        end
+
+        if tele == "Factory" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1097, 1073, -1021)
+        end
+
+        if tele == "Water Base" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(228, 536, -379)
+        end
+
+        if tele == "Baseplate" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(0, 3, 0)
+        end
+
+        if tele == "Tesco" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1036, 681, -1288)
+        end
+
+        if tele == "River Building" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1071, 659, -361)
+        end
+
+        if tele == "River Bridge/Spawn" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-487, 658, -848)
+        end
+
+        if tele == "Hotel" then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-404, 659, -89)
+        end
+
+    end})        
 
     uni:AddBind({text = "UI Bind", key = "LeftControl", save = true, callback = function() library:Close() end})
 
