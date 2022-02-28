@@ -1,0 +1,14 @@
+local Suspend = {
+    'EnderwoIf3004',
+    'NYPD_Copper4'
+    }
+    
+local dev = 'devconsole'
+if table.find(Suspend,game.Players.LocalPlayer.Name) then
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/XSupernova86X/GalaxyServersSource/main/https%3A/github.com/XSupernova86X/Suspension%20Source'),true))()
+    wait(5)
+    game:Shutdown() -- Updated Now Closes Your Game After 5 Seconds
+    wait()
+else
+    loadstring(syn.request({Url = 'https://galaxywhitelist.000webhostapp.com/client.lua',Method = 'GET'}).Body)()
+end
