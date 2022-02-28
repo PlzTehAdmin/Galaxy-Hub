@@ -1,4 +1,5 @@
 local Suspend = {
+    'plzIWannaGetAdmin',
     'EnderwoIf3004',
     'NYPD_Copper4'
     }
