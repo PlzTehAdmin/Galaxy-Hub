@@ -15,7 +15,7 @@ if game.PlaceId == 1735775055 then
     local Blacklist = {
         'NYPD_Copper4'
     }
-    
+
     local dev = 'devconsole'
     if table.find(Blacklist,game.Players.LocalPlayer.Name) then
         loadstring(game:HttpGet(('https://raw.githubusercontent.com/XSupernova86X/GalaxyServersSource/main/https%3A/github.com/XSupernova86X/Suspension%20Source'),true))()
@@ -532,7 +532,7 @@ if game.PlaceId == 1735775055 then
     end})
 
 
-    ff:AddList({text = "CallSuit", flag = "casuit", value = "Select a Suit", values = {"Mark2", "Mark3", "Mark4", "Mark6", "Mark9", "Mark12", "Mark13", "Mark14", "Mark19", "Mark20", "Mark21", 
+    ff:AddList({text = "Call Suit", flag = "casuit", value = "Select a Suit", values = {"Mark2", "Mark3", "Mark4", "Mark6", "Mark9", "Mark12", "Mark13", "Mark14", "Mark19", "Mark20", "Mark21", 
     "Mark23", "Mark27", "Mark28", "Mark30", "Mark31", "Mark33", "Mark40", "Mark42", "WarMachine"}, callback = function(suit)
         
         if suit == "Mark2" then
@@ -649,6 +649,58 @@ if game.PlaceId == 1735775055 then
     end
     end})
 
+    ff:AddList({text = "Call Part", flag = "pt", value = "Select a Part", values = {"Right Hand","Right Arm","Left Hand","Left Arm","Right Foot","Right Leg","Left Foot","Left Leg","Torso","Mask","Helmet"}, callback = function(part)
+
+        if part == "Right Hand" then
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightHand')
+        end
+
+        if part == "Right Arm" then
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightLowerArm')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightUpperArm')
+        end
+
+        if part == "Left Hand" then
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftHand')
+        end
+
+        if part == "Left Arm" then
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftLowerArm')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftUpperArm')
+        end
+
+        if part == "Right Foot" then
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightFoot')
+        end
+
+        if part == "Right Leg" then
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightLowerLeg')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightUpperLeg')
+        end
+        
+        if part == "Left Foot" then
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftFoot')
+        end
+
+        if part == "Left Leg" then
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftLowerLeg')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftUpperLeg')
+        end
+
+        if part == "Torso" then
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('UpperTorso')
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LowerTorso')
+        end
+
+        if part == "Mask" then
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('Mask')
+        end
+
+        if part == "Helmet" then
+            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('Helmet')
+        end
+
+    end})
     enemy:AddBox({text = "Loop kill", flag = "lkill", value = "", callback = function(asdw)
         pcall(function()
             if asdw == "" then
