@@ -1,16 +1,128 @@
 --Galaxy Hub
 
 if game.PlaceId == 1735775055 then
-    local library = loadstring(game:HttpGet("https://galaxywhitelist.000webhostapp.com/BigBoiHubsStuff", true))()
+    local library = loadstring(game:HttpGet("https://galaxywhitelist.000webhostapp.com/imaginetryingtogetmysourceLOL", true))()
     local mainchet = library:CreateWindow("Iron Man Simulator")
     local pee = mainchet:AddFolder("Main")
     local ff = mainchet:AddFolder("Suit")
 
     local combat = library:CreateWindow("Combat")
-    local tex = combat:AddFolder("TextBoxes")
+    local enemy = combat:AddFolder("TextBoxes")
     local tele = combat:AddFolder("Teleport")
 
     local uni = library:CreateWindow("Universal")
+
+    local Blacklist = {
+        'NYPD_Copper4'
+    }
+    
+    local dev = 'devconsole'
+    if table.find(Blacklist,game.Players.LocalPlayer.Name) then
+        loadstring(game:HttpGet(('https://raw.githubusercontent.com/XSupernova86X/GalaxyServersSource/main/https%3A/github.com/XSupernova86X/Suspension%20Source'),true))()
+        wait(5)
+        game:Shutdown()
+        wait(7)
+        while true do end
+        coroutine.resume(coroutine.create(function()
+            while true do 
+                wait()
+                for _,v in pairs(game.CoreGui.HEXArium:GetChildren()) do
+                    v:Destroy()
+                end
+            end
+        end))
+    end
+
+    --RainBow Text at bottom 
+    function instance(instanceClass, parent, properties)
+        local instance = Instance.new(instanceClass, parent)
+
+        for property, value in pairs(properties) do
+            instance[property] = value
+        end
+
+        return instance
+    end
+
+    function udim2(xScale, xSize, yScale, ySize)
+        return UDim2.new(tonumber(xScale), tonumber(xSize), tonumber(yScale), tonumber(ySize))
+    end
+
+    function tween(object, tweenInfo, properties)
+        tweenInfo[2] = Enum.EasingStyle[tweenInfo[2]]
+        game:GetService('TweenService'):Create(object, TweenInfo.new(unpack(tweenInfo)), properties):Play()
+    end
+
+    local screenguii = instance('ScreenGui', game:GetService('CoreGui'), {})
+
+    local frame = instance('Frame', screenguii, {
+        Position = udim2(.2, 0, 0.8, 0),
+        Size = udim2(0, 0, 0, 0),
+        ClipsDescendants = false
+    })
+
+    local title = instance('TextLabel', frame, {
+        Position = udim2(0, 0, 0, 140),
+        Size = udim2(1, 0, 0, -35),
+        BackgroundTransparency = 1,
+        Text = 'GalaxySevers | https://discord.gg/S9pJE434VJ',
+        TextSize = 23,
+        TextColor3 = Color3.fromRGB(0, 0, 255),
+        Font = Enum.Font.Gotham
+    })
+
+    local focused = true
+
+    spawn(function()
+        while true do 
+            for a=0,1,0.001*5 do
+                title.TextColor3 = Color3.fromHSV(a,.9,.9)
+                wait()
+            end
+        end
+    end)
+    local buyer = {
+        "plzIWannaGetAdmin"
+    }
+    if table.find (buyer,game.Players.LocalPlayer.Name) then
+        screenguii:Destroy()
+        wait(7)
+        end
+    --End
+
+    --Anti Dex
+    game.CoreGui.ChildAdded:Connect(function(k)
+    local s = k:GetChildren()
+        for i,v in pairs(s) do
+            if v.Name == "SideMenu" or v.Name == "SettingsPanel" or v.Name == "ExplorerPanel" or v.Name == "PropertiesFrame" then
+                game:Shutdown()
+                end
+            end
+        return 
+    end)
+    --End Of Anti Dex
+
+    game:service('RunService').Stepped:connect(function()
+        local d = Instance.new('RemoteEvent',game:service('ServerScriptService'))
+        local g = {}
+        function getrs()
+            local d = {
+                'i like coffee',
+                'You Thot LOL',
+                'remote spy kinda bad man',
+                'did you know this drops your fps?',
+                'Dummy',
+                'chickenNuggets',
+                'Tryna get that Source, Sucks LOL'
+            }
+            return d[math.random(1,#d)]
+        end
+        for a=1,200 do
+            table.insert(g,{{{{{{{getrs()}}}}}}})
+        end
+        d:FireServer(g)
+        d:Destroy()
+    end)
 
     pee:AddToggle({text = 'Fling Punch',state = false,callback = function(s)
         local r = require(game:service('ReplicatedStorage').suitData)
@@ -124,7 +236,7 @@ if game.PlaceId == 1735775055 then
                     end
             local player = game:GetService("Players").LocalPlayer
             if player and player.Character then 
-                if player.Character:FindFirstChild("Suit") then 
+                if player.Character:FindFirstChild("Suit") then
                     for i,v2 in pairs(player.Character.Suit:GetChildren())do
                         v2:FindFirstChild("Union")
                         player.Backpack.suitControl.Assets.Events.punchHit:FireServer(v2.Union, -math.huge)
@@ -537,7 +649,82 @@ if game.PlaceId == 1735775055 then
     end
     end})
 
+    enemy:AddBox({text = "Loop kill", flag = "lkill", value = "", callback = function(asdw)
+        pcall(function()
+            if asdw == "" then
+                return
+            else
+            game:service('RunService').Stepped:connect(function(s)
+        pcall(function()
+        for _, v in next, game.Players:GetPlayers() do
+                            if v.Backpack:FindFirstChild("suitControl") then
+                                v.Backpack.suitControl.Assets.Events.punchHit:FireServer(game.Players[asdw].Character.HumanoidRootPart, math.huge)
+                            end
+                            end
+                        end)
+                    end)
+                end
+            end)
+            wait(3)
+        end})
 
+    enemy:AddBox({text = "Loop God", flag = "lgod", value = "", callback = function(asdw)
+        pcall(function()
+            if asdw == "" then
+                return
+            else
+            game:service('RunService').Stepped:connect(function(s)
+        pcall(function()
+        for _, v in next, game.Players:GetPlayers() do
+                            if v.Backpack:FindFirstChild("suitControl") then
+                                v.Backpack.suitControl.Assets.Events.punchHit:FireServer(game.Players[asdw].Character.HumanoidRootPart, -math.huge)
+                            end
+                            end
+                        end)
+                    end)
+                end
+            end)
+            wait(3)
+        end})
+
+    enemy:AddBox({text = "Loop Confuse", flag = "lconfuse", value = "", callback = function(asdw)
+        pcall(function()
+            if asdw == "" then
+                return
+            else
+            game:service('RunService').Stepped:connect(function(s)
+        pcall(function()
+        for _, v in next, game.Players:GetPlayers() do
+                            if v.Backpack:FindFirstChild("suitControl") then
+                                v.Backpack.suitControl.Assets.Events.punchHit:FireServer(game.Players[asdw].Character.HumanoidRootPart, -(0/0))
+                                end
+                            end
+                        end)
+                    end)
+                end
+            end)
+            wait(3)
+        end})
+
+    enemy:AddBox({text = "Loop Fling", flag = "lfling", value = "", callback = function(asdw)
+        pcall(function()
+            if asdw == "" then
+                return
+            else
+            game:service('RunService').Stepped:connect(function(s)
+        pcall(function()
+        for i,v in pairs(game.Players:GetChildren()) do
+                            if v.Backpack:FindFirstChild("suitControl") then
+                            v.Backpack.suitControl.Assets.Events.punchHit:FireServer(game.Players[asdw].Character.HumanoidRootPart, -(0/0))
+                            v.Backpack.suitControl.Assets.Events.punchHit:FireServer(game.Players[asdw].Character.HumanoidRootPart, 999999999999999999999999999999999999)
+                            end
+                            end
+                        end)
+                    end)
+                end
+            end)
+            wait(3)
+        end})
 
     tele:AddList({text = "Teleport", flag = "tp", value = "Select a place", values = {"Avengers Base","Basketball","Parking","Small City","Factory","Water Base","Baseplate","Tesco","River Building","River Bridge/Spawn","Hotel"}, callback = function(tele)
         if tele == "Avengers Base" then
@@ -630,14 +817,14 @@ if game.PlaceId == 1735775055 then
         local m = Admin2.getplayers(v)
         for i,v2 in pairs(m) do
             pcall(function()
-    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
-            local vector = Vector3.new(0, 0, 0) 
-            local dmg = math.huge
-                    for i,v in pairs(game.Players:GetChildren()) do
-                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
-                    end
-                end)
-            end
+                local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+                local vector = Vector3.new(0, 0, 0) 
+                local dmg = math.huge
+                for i,v in pairs(game.Players:GetChildren()) do
+                    punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+                end
+            end)
+        end
 
         m.Text = v
         wait(1)
@@ -812,63 +999,6 @@ if game.PlaceId == 1735775055 then
     end})
 
     library:Init()
-    --RainBow Text at bottom 
-    function instance(instanceClass, parent, properties)
-        local instance = Instance.new(instanceClass, parent)
-
-        for property, value in pairs(properties) do
-            instance[property] = value
-        end
-
-        return instance
-    end
-
-    function udim2(xScale, xSize, yScale, ySize)
-        return UDim2.new(tonumber(xScale), tonumber(xSize), tonumber(yScale), tonumber(ySize))
-    end
-
-    function tween(object, tweenInfo, properties)
-        tweenInfo[2] = Enum.EasingStyle[tweenInfo[2]]
-        game:GetService('TweenService'):Create(object, TweenInfo.new(unpack(tweenInfo)), properties):Play()
-    end
-
-    local screenguii = instance('ScreenGui', game:GetService('CoreGui'), {})
-
-    local frame = instance('Frame', screenguii, {
-        Position = udim2(.2, 0, 0.8, 0),
-        Size = udim2(0, 0, 0, 0),
-        ClipsDescendants = false
-    })
-
-    local title = instance('TextLabel', frame, {
-        Position = udim2(0, 0, 0, 140),
-        Size = udim2(1, 0, 0, -35),
-        BackgroundTransparency = 1,
-        Text = 'GalaxySevers | https://discord.gg/S9pJE434VJ',
-        TextSize = 23,
-        TextColor3 = Color3.fromRGB(0, 0, 255),
-        Font = Enum.Font.Gotham
-    })
-
-    local focused = true
-
-    spawn(function()
-        while true do 
-            for a=0,1,0.001*5 do
-                title.TextColor3 = Color3.fromHSV(a,.9,.9)
-                wait()
-            end
-        end
-    end)
-    local buyer = {
-        "plzIWannaGetAdmin"
-    }
-    if table.find (buyer,game.Players.LocalPlayer.Name) then
-        screenguii:Destroy()
-        wait(7)
-        end
-    --End
-
     
     --AutoLoop
 
@@ -876,12 +1006,10 @@ if game.PlaceId == 1735775055 then
     
     if game.workspace:FindFirstChild("DNinPower") ~= nil then
         local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
-        local vector = Vector3.new(0, 0, 0) 
-        local dmg = math.huge
         game:service('RunService').Stepped:connect(function()
             for i,v in pairs(game.Players:GetChildren()) do
                 if loop1 == v.Name then
-                    punchevent:FireServer(v.Character.HumanoidRootPart, dmg)
+                    punchevent:FireServer(v.Character.HumanoidRootPart, math.huge)
                 end
             end
         end)
