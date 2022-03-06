@@ -826,8 +826,10 @@ if game.PlaceId == 1735775055 then
 
     uni:AddBind({text = "UI Bind", key = "LeftControl", save = true, callback = function() library:Close() end})
 
+
     uni:AddButton({text = "Galaxy Hub Admin", flag = "gadmin", callback = function()
         pcall(function()
+
         --Galaxy Hub Admin
 
     local Admin = loadstring(game:HttpGet("https://raw.githubusercontent.com/PlzTehAdmin/Galaxy-Hub/main/Galaxy%20Admin%20Source%20Code"))()
@@ -863,6 +865,44 @@ if game.PlaceId == 1735775055 then
     }
 
     Admin2.setPrefix(",")
+
+    Admin2.addCommand({name = "Harmless",desc = "Player looses ability to attack",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            pcall(function()
+                local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.LeftHand, 0.8)
+                        punchevent:FireServer(v2.Character.RightHand, 0.8)
+                        punchevent:FireServer(v2.Character.UpperTorso, 1.8)
+                    end
+                end)
+            end
+    
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end})
+
+    Admin2.addCommand({name = "Loopharmless",desc = "Similar to loopkill except makes the player fly",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            pcall(function()
+                local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+                game:service('RunService').Stepped:connect(function()
+                    for i,v in pairs(game.Players:GetChildren()) do
+                        punchevent:FireServer(v2.Character.LeftHand, 0.5)
+                        punchevent:FireServer(v2.Character.RightHand, 0.5)
+                        punchevent:FireServer(v2.Character.UpperTorso, 1.8)
+                    end
+                end)
+                end)
+            end
+    
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end})
 
     Admin2.addCommand({name = "Snap",desc = "Kills player",callback = function(v)
         local m = Admin2.getplayers(v)
