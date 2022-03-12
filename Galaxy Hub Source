@@ -5,6 +5,7 @@ if game.PlaceId == 1735775055 then
     local mainchet = library:CreateWindow("Iron Man Simulator")
     local pee = mainchet:AddFolder("Main")
     local ff = mainchet:AddFolder("Suit")
+    local rapid = mainchet:AddFolder("Rapid Suit")
 
     local combat = library:CreateWindow("Combat")
     local enemy = combat:AddFolder("TextBoxes")
@@ -379,157 +380,36 @@ if game.PlaceId == 1735775055 then
     ff:AddButton({text = "Unbreakable Suit", flag = "usuit", callback = function()
         game.Players.LocalPlayer.Character.Suit.Status.damageTaken:Destroy()
         end})
-        
+
+        ff:AddButton({text = "Instant Suit", flag = "isuit", callback = function()
+            local UserInputService = game:GetService("UserInputService")
+            local function GetInput(input, gpe)
+            if input.KeyCode == Enum.KeyCode.Q then 
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftFoot')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftHand')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftLowerArm')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftLowerLeg')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftUpperArm')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LowerTorso')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightFoot')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightHand')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightLowerArm')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightLowerLeg')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightUpperArm')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightUpperLeg')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('UpperTorso')
+                game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftUpperLeg')
+            end
+        end
+        UserInputService.InputBegan:Connect(GetInput)
+        end})
+
         ff:AddButton({text = "Strong Blasts", flag = "sblasts", callback = function()
             for v = 1, 5 do
                 local clone = game.Players.LocalPlayer.Backpack.suitControl.Client:Clone()
                 clone.Parent = game.Players.LocalPlayer.Backpack.suitControl
             end
         end})
-
-        ff:AddButton({text = "Rapid Suit On", flag = "rsuit", callback = function()
-                local Data = game.ReplicatedStorage.suitData
-                local Data2 = require(Data)
-                local Data3 = Data2.suitData
-                Data3.Mark19.Acceleration = 999
-                Data3.Mark19.Deceleration = 1000
-                Data3.Mark19.maxSpeed = 15000
-                Data3.Mark4.Acceleration = 999
-                Data3.Mark4.Deceleration = 1000
-                Data3.Mark4.maxSpeed = 15000
-                Data3.Mark20.Acceleration = 999
-                Data3.Mark20.Deceleration = 1000
-                Data3.Mark20.maxSpeed = 15000
-                Data3.Mark12.Acceleration = 999
-                Data3.Mark12.Deceleration = 1000
-                Data3.Mark12.maxSpeed = 15000
-                Data3.Mark28.Acceleration = 999
-                Data3.Mark28.Deceleration = 1000
-                Data3.Mark28.maxSpeed = 15000
-                Data3.Mark40.Acceleration = 1000
-                Data3.Mark40.Deceleration = 1000
-                Data3.Mark40.maxSpeed = 15000
-                Data3.Mark6.Acceleration = 999
-                Data3.Mark6.Deceleration = 1000
-                Data3.Mark6.maxSpeed = 15000
-                Data3.Mark13.Acceleration = 999
-                Data3.Mark13.Deceleration = 1000
-                Data3.Mark13.maxSpeed = 15000
-                Data3.Mark33.Acceleration = 999
-                Data3.Mark33.Deceleration = 1000
-                Data3.Mark33.maxSpeed = 15000
-                Data3.Mark21.Acceleration = 1000
-                Data3.Mark21.Deceleration = 1000
-                Data3.Mark21.maxSpeed = 15000
-                Data3.Mark14.Acceleration = 1000
-                Data3.Mark14.Deceleration = 1000
-                Data3.Mark14.maxSpeed = 15000
-                Data3.Mark9.Acceleration = 999
-                Data3.Mark9.Deceleration = 1000
-                Data3.Mark9.maxSpeed = 15000
-                Data3.Mark31.Acceleration = 1000
-                Data3.Mark31.Deceleration = 1000
-                Data3.Mark31.maxSpeed = 15000
-                Data3.Mark30.Acceleration = 999
-                Data3.Mark30.Deceleration = 1000
-                Data3.Mark30.maxSpeed = 15000
-                Data3.Mark27.Acceleration = 999
-                Data3.Mark27.Deceleration = 1000
-                Data3.Mark27.maxSpeed = 15000
-                Data3.Mark3.Acceleration = 999
-                Data3.Mark3.Deceleration = 1000
-                Data3.Mark3.maxSpeed = 15000
-                Data3.Mark23.Acceleration = 999
-                Data3.Mark23.Deceleration = 1000
-                Data3.Mark23.maxSpeed = 15000
-                Data3.Mark2.Acceleration = 999
-                Data3.Mark2.Deceleration = 1000
-                Data3.Mark2.maxSpeed = 15000
-        end})
-
-        ff:AddButton({text = "Rapid Suit Off", flag = "rsuit", callback = function()
-            local Data = game.ReplicatedStorage.suitData
-            local Data2 = require(Data)
-            local Data3 = Data2.suitData
-            Data3.Mark19.Acceleration = 310
-            Data3.Mark19.Deceleration = 150
-            Data3.Mark19.maxSpeed = 310
-            Data3.Mark4.Acceleration = 310
-            Data3.Mark4.Deceleration = 150
-            Data3.Mark4.maxSpeed = 310
-            Data3.Mark20.Acceleration = 310
-            Data3.Mark20.Deceleration = 150
-            Data3.Mark20.maxSpeed = 310
-            Data3.Mark12.Acceleration = 310
-            Data3.Mark12.Deceleration = 150
-            Data3.Mark12.maxSpeed = 310
-            Data3.Mark28.Acceleration = 310
-            Data3.Mark28.Deceleration = 150
-            Data3.Mark28.maxSpeed = 310
-            Data3.Mark40.Acceleration = 310
-            Data3.Mark40.Deceleration = 150
-            Data3.Mark40.maxSpeed = 310
-            Data3.Mark6.Acceleration = 310
-            Data3.Mark6.Deceleration = 150
-            Data3.Mark6.maxSpeed = 310
-            Data3.Mark13.Acceleration = 310
-            Data3.Mark13.Deceleration = 150
-            Data3.Mark13.maxSpeed = 310
-            Data3.Mark33.Acceleration = 310
-            Data3.Mark33.Deceleration = 150
-            Data3.Mark33.maxSpeed = 310
-            Data3.Mark21.Acceleration = 310
-            Data3.Mark21.Deceleration = 150
-            Data3.Mark21.maxSpeed = 310
-            Data3.Mark14.Acceleration = 310
-            Data3.Mark14.Deceleration = 150
-            Data3.Mark14.maxSpeed = 310
-            Data3.Mark9.Acceleration = 310
-            Data3.Mark9.Deceleration = 150
-            Data3.Mark9.maxSpeed = 310
-            Data3.Mark31.Acceleration = 310
-            Data3.Mark31.Deceleration = 150
-            Data3.Mark31.maxSpeed = 310
-            Data3.Mark30.Acceleration = 310
-            Data3.Mark30.Deceleration = 150
-            Data3.Mark30.maxSpeed = 310
-            Data3.Mark27.Acceleration = 310
-            Data3.Mark27.Deceleration = 150
-            Data3.Mark27.maxSpeed = 310
-            Data3.Mark3.Acceleration = 310
-            Data3.Mark3.Deceleration = 150
-            Data3.Mark3.maxSpeed = 310
-            Data3.Mark23.Acceleration = 310
-            Data3.Mark23.Deceleration = 150
-            Data3.Mark23.maxSpeed = 310
-            Data3.Mark2.Acceleration = 310
-            Data3.Mark2.Deceleration = 150
-            Data3.Mark2.maxSpeed = 310
-        end})
-        
-    ff:AddButton({text = "Instant Suit", flag = "isuit", callback = function()
-        local UserInputService = game:GetService("UserInputService")
-        local function GetInput(input, gpe)
-        if input.KeyCode == Enum.KeyCode.Q then 
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftFoot')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftHand')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftLowerArm')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftLowerLeg')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftUpperArm')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LowerTorso')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightFoot')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightHand')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightLowerArm')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightLowerLeg')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightUpperArm')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('RightUpperLeg')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('UpperTorso')
-            game.Players.LocalPlayer.Backpack.ironMan.Assets.Events.callPiece:FireServer('LeftUpperLeg')
-        end
-    end
-    UserInputService.InputBegan:Connect(GetInput)
-    end})
-
 
     ff:AddList({text = "Call Suit", flag = "casuit", value = "Select a Suit", values = {"Mark2", "Mark3", "Mark4", "Mark6", "Mark9", "Mark12", "Mark13", "Mark14", "Mark19", "Mark20", "Mark21", 
     "Mark23", "Mark27", "Mark28", "Mark30", "Mark31", "Mark33", "Mark40", "Mark42", "WarMachine"}, callback = function(suit)
@@ -794,6 +674,153 @@ if game.PlaceId == 1735775055 then
         end
 
     end})
+
+    rapid:AddSlider({text = 'Max Speed', min = 1, max = 15000, callback = function(v)
+        local Data = game.ReplicatedStorage.suitData
+        local Data2 = require(Data)
+        local Data3 = Data2.suitData
+        Data3.Mark19.maxSpeed = v
+        Data3.Mark4.maxSpeed = v
+        Data3.Mark20.maxSpeed = v
+        Data3.Mark12.maxSpeed = v
+        Data3.Mark28.maxSpeed = v
+        Data3.Mark40.maxSpeed = v
+        Data3.Mark6.maxSpeed = v
+        Data3.Mark13.maxSpeed = v
+        Data3.Mark33.maxSpeed = v
+        Data3.Mark21.maxSpeed = v
+        Data3.Mark14.maxSpeed = v
+        Data3.Mark9.maxSpeed = v
+        Data3.Mark31.maxSpeed = v
+        Data3.Mark30.maxSpeed = v
+        Data3.Mark27.maxSpeed = v
+        Data3.Mark3.maxSpeed = v
+        Data3.Mark23.maxSpeed = v
+        Data3.Mark2.maxSpeed = v
+    end})
+    
+    rapid:AddSlider({text = 'Acceleration', min = 1, max = 1000, callback = function(v)
+        local Data = game.ReplicatedStorage.suitData
+        local Data2 = require(Data)
+        local Data3 = Data2.suitData
+        Data3.Mark19.Acceleration = v
+        Data3.Mark4.Acceleration = v
+        Data3.Mark20.Acceleration = v
+        Data3.Mark12.Acceleration = v
+        Data3.Mark28.Acceleration = v
+        Data3.Mark40.Acceleration = v
+        Data3.Mark6.Acceleration = v
+        Data3.Mark13.Acceleration = v
+        Data3.Mark33.Acceleration = v
+        Data3.Mark21.Acceleration = v
+        Data3.Mark14.Acceleration = v
+        Data3.Mark9.Acceleration = v
+        Data3.Mark31.Acceleration = v
+        Data3.Mark30.Acceleration = v
+        Data3.Mark27.Acceleration = v
+        Data3.Mark3.Acceleration = v
+        Data3.Mark23.Acceleration = v
+        Data3.Mark2.Acceleration = v
+    end})
+    
+    rapid:AddSlider({text = 'Deceleration', min = 1, max = 1000, callback = function(v)
+        local Data = game.ReplicatedStorage.suitData
+        local Data2 = require(Data)
+        local Data3 = Data2.suitData
+        Data3.Mark19.Deceleration = v
+        Data3.Mark4.Deceleration = v
+        Data3.Mark20.Deceleration = v
+        Data3.Mark12.Deceleration = v
+        Data3.Mark28.Deceleration = v
+        Data3.Mark40.Deceleration = v
+        Data3.Mark6.Deceleration = v
+        Data3.Mark13.Deceleration = v
+        Data3.Mark33.Deceleration = v
+        Data3.Mark21.Deceleration = v
+        Data3.Mark14.Deceleration = v
+        Data3.Mark9.Deceleration = v
+        Data3.Mark31.Deceleration = v
+        Data3.Mark30.Deceleration = v
+        Data3.Mark27.Deceleration = v
+        Data3.Mark3.Deceleration = v
+        Data3.Mark23.Deceleration = v
+        Data3.Mark2.Deceleration = v
+    end})
+
+    local value = false
+    rapid:AddToggle({text = "Toggle",state = false, callback = function(s)
+        pcall(function()
+            value = s
+            if s then
+                local j
+                j = game:service('RunService').Stepped:connect(function()
+                    if not value then
+                        game:service('RunService').Stepped:connect(function()
+                            local Data = game.ReplicatedStorage.suitData
+                            local Data2 = require(Data)
+                            local Data3 = Data2.suitData
+                            Data3.Mark19.Acceleration = 310
+                            Data3.Mark19.Deceleration = 150
+                            Data3.Mark19.maxSpeed = 310
+                            Data3.Mark4.Acceleration = 310
+                            Data3.Mark4.Deceleration = 150
+                            Data3.Mark4.maxSpeed = 310
+                            Data3.Mark20.Acceleration = 310
+                            Data3.Mark20.Deceleration = 150
+                            Data3.Mark20.maxSpeed = 310
+                            Data3.Mark12.Acceleration = 310
+                            Data3.Mark12.Deceleration = 150
+                            Data3.Mark12.maxSpeed = 310
+                            Data3.Mark28.Acceleration = 310
+                            Data3.Mark28.Deceleration = 150
+                            Data3.Mark28.maxSpeed = 310
+                            Data3.Mark40.Acceleration = 310
+                            Data3.Mark40.Deceleration = 150
+                            Data3.Mark40.maxSpeed = 310
+                            Data3.Mark6.Acceleration = 310
+                            Data3.Mark6.Deceleration = 150
+                            Data3.Mark6.maxSpeed = 310
+                            Data3.Mark13.Acceleration = 310
+                            Data3.Mark13.Deceleration = 150
+                            Data3.Mark13.maxSpeed = 310
+                            Data3.Mark33.Acceleration = 310
+                            Data3.Mark33.Deceleration = 150
+                            Data3.Mark33.maxSpeed = 310
+                            Data3.Mark21.Acceleration = 310
+                            Data3.Mark21.Deceleration = 150
+                            Data3.Mark21.maxSpeed = 310
+                            Data3.Mark14.Acceleration = 310
+                            Data3.Mark14.Deceleration = 150
+                            Data3.Mark14.maxSpeed = 310
+                            Data3.Mark9.Acceleration = 310
+                            Data3.Mark9.Deceleration = 150
+                            Data3.Mark9.maxSpeed = 310
+                            Data3.Mark31.Acceleration = 310
+                            Data3.Mark31.Deceleration = 150
+                            Data3.Mark31.maxSpeed = 310
+                            Data3.Mark30.Acceleration = 310
+                            Data3.Mark30.Deceleration = 150
+                            Data3.Mark30.maxSpeed = 310
+                            Data3.Mark27.Acceleration = 310
+                            Data3.Mark27.Deceleration = 150
+                            Data3.Mark27.maxSpeed = 310
+                            Data3.Mark3.Acceleration = 310
+                            Data3.Mark3.Deceleration = 150
+                            Data3.Mark3.maxSpeed = 310
+                            Data3.Mark23.Acceleration = 310
+                            Data3.Mark23.Deceleration = 150
+                            Data3.Mark23.maxSpeed = 310
+                            Data3.Mark2.Acceleration = 310
+                            Data3.Mark2.Deceleration = 150
+                            Data3.Mark2.maxSpeed = 310
+                        end)
+                    end
+            return j:Disconnect()
+                    end)
+            end
+        end)
+    end})
+
     enemy:AddBox({text = "Loop kill", flag = "lkill", value = "", callback = function(asdw)
         pcall(function()
             if asdw == "" then
