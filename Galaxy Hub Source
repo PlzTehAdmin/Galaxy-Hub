@@ -1309,8 +1309,12 @@ LPlayer.Chatted:Connect(function(msg)
             end
         end
         if cmd == "ghcheck" then
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w plzIWannaGetAdmin I am using Galaxy Servers", "All")
-            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w Lithium_Nova I am using Galaxy Servers", "All")
+            if game.Players:FindFirstChild("plzIWannaGetAdmin") then
+                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w plzIWannaGetAdmin I am using Galaxy Servers", "All")
+            end
+            if game.Players:FindFirstChild("Lithium_Nova") then
+                game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer("/w Lithium_Nova I am using Galaxy Servers", "All")
+            end
         end
         if cmd == "kill" then
             local var = string.sub(msg,space+1)
